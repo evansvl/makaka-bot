@@ -12,7 +12,7 @@ def generate_captcha_text(length=6):
 def generate_captcha_image(text: str, width=320, height=100):
     image = Image.new('RGB', (width, height), color=(220, 220, 220))
     draw = ImageDraw.Draw(image)
-    font_name = "arial.ttf"
+    font_name = "dejavusans.ttf" if os.name != 'nt' else "arial.ttf"
     font_size = random.randint(45, 55)
     try:
         font_path = font_name
