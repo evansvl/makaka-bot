@@ -22,3 +22,11 @@ async def auto_create_thread(message: discord.Message, target_channel_id: int):
         print(f"Ошибка HTTP при создании ветки: {e.status} - {e.text}")
     except Exception as e:
         print(f"Произошла непредвиденная ошибка при создании ветки: {e}")
+    
+    try:
+        await message.add_reaction("❤️")
+        print(f"Добавлена реакция ❤️ к сообщению ID {message.id}")
+    except discord.Forbidden:
+        print(f"Ошибка: У бота нет прав на добавление реакций к сообщению ID {message.id} в канале '{message.channel.name}'.")
+    except discord.HTTPException as e:
+        print(f"Ошибка HTTP при добавлении реакции: {e.status} - {e.text}")
